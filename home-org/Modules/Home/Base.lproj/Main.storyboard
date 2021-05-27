@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Home View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="HomeViewController" customModule="home_org" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="9d8-gL-pMr">
+                                <rect key="frame" x="30" y="74" width="354" height="758"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GFV-NB-B7B" customClass="MDCCard">
+                                        <rect key="frame" x="0.0" y="0.0" width="354" height="167"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C13-ax-4pe">
+                                                <rect key="frame" x="20" y="20" width="314" height="127"/>
+                                                <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="30"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBlueColor"/>
+                                        <constraints>
+                                            <constraint firstItem="C13-ax-4pe" firstAttribute="leading" secondItem="GFV-NB-B7B" secondAttribute="leading" constant="20" id="7WC-YU-Nbk"/>
+                                            <constraint firstAttribute="trailing" secondItem="C13-ax-4pe" secondAttribute="trailing" constant="20" id="Ldk-b7-Njv"/>
+                                            <constraint firstAttribute="bottom" secondItem="C13-ax-4pe" secondAttribute="bottom" constant="20" id="XyX-ke-Lsx"/>
+                                            <constraint firstItem="C13-ax-4pe" firstAttribute="top" secondItem="GFV-NB-B7B" secondAttribute="top" constant="20" id="wMN-tJ-BJk"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yOm-Qt-9JQ" customClass="MDCCard">
+                                        <rect key="frame" x="0.0" y="197" width="354" height="167"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SEa-tx-1zr">
+                                                <rect key="frame" x="20" y="20" width="314" height="127"/>
+                                                <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="30"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemOrangeColor"/>
+                                        <constraints>
+                                            <constraint firstItem="SEa-tx-1zr" firstAttribute="top" secondItem="yOm-Qt-9JQ" secondAttribute="top" constant="20" id="dS5-FJ-JWH"/>
+                                            <constraint firstItem="SEa-tx-1zr" firstAttribute="leading" secondItem="yOm-Qt-9JQ" secondAttribute="leading" constant="20" id="hhK-qf-uDk"/>
+                                            <constraint firstAttribute="trailing" secondItem="SEa-tx-1zr" secondAttribute="trailing" constant="20" id="i0C-mJ-92r"/>
+                                            <constraint firstAttribute="bottom" secondItem="SEa-tx-1zr" secondAttribute="bottom" constant="20" id="keG-Kf-kge"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eaW-LR-Zpq" customClass="MDCCard">
+                                        <rect key="frame" x="0.0" y="394" width="354" height="167"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EwT-3U-bLM">
+                                                <rect key="frame" x="20" y="20" width="314" height="127"/>
+                                                <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="30"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemPurpleColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="EwT-3U-bLM" secondAttribute="trailing" constant="20" id="HzM-Iz-5GW"/>
+                                            <constraint firstAttribute="bottom" secondItem="EwT-3U-bLM" secondAttribute="bottom" constant="20" id="QeE-DE-jbd"/>
+                                            <constraint firstItem="EwT-3U-bLM" firstAttribute="leading" secondItem="eaW-LR-Zpq" secondAttribute="leading" constant="20" id="clp-3Y-027"/>
+                                            <constraint firstItem="EwT-3U-bLM" firstAttribute="top" secondItem="eaW-LR-Zpq" secondAttribute="top" constant="20" id="oth-97-AQ5"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0xx-NO-JJ4" customClass="MDCCard">
+                                        <rect key="frame" x="0.0" y="591" width="354" height="167"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pwG-GT-YJY">
+                                                <rect key="frame" x="20" y="20" width="314" height="127"/>
+                                                <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="30"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemRedColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="pwG-GT-YJY" secondAttribute="trailing" constant="20" id="0De-T6-RNX"/>
+                                            <constraint firstItem="pwG-GT-YJY" firstAttribute="leading" secondItem="0xx-NO-JJ4" secondAttribute="leading" constant="20" id="1pt-aP-WmJ"/>
+                                            <constraint firstAttribute="bottom" secondItem="pwG-GT-YJY" secondAttribute="bottom" constant="20" id="9NW-rh-fHr"/>
+                                            <constraint firstItem="pwG-GT-YJY" firstAttribute="top" secondItem="0xx-NO-JJ4" secondAttribute="top" constant="20" id="Xx3-rP-ZKG"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="9d8-gL-pMr" secondAttribute="trailing" constant="30" id="AmF-VE-3fx"/>
+                            <constraint firstItem="9d8-gL-pMr" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="30" id="EA7-D5-115"/>
+                            <constraint firstItem="9d8-gL-pMr" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="30" id="NYn-G4-5ol"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="9d8-gL-pMr" secondAttribute="bottom" constant="30" id="ysa-5Q-G6C"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="firstCard" destination="GFV-NB-B7B" id="kxd-0L-cUB"/>
+                        <outlet property="firstLabel" destination="C13-ax-4pe" id="aLF-6E-jdI"/>
+                        <outlet property="fourthCard" destination="0xx-NO-JJ4" id="CXu-o9-IEm"/>
+                        <outlet property="fourthLabel" destination="pwG-GT-YJY" id="WuI-uj-5xC"/>
+                        <outlet property="secondCard" destination="yOm-Qt-9JQ" id="8hL-vg-4G3"/>
+                        <outlet property="secondLabel" destination="SEa-tx-1zr" id="dAw-P1-TRX"/>
+                        <outlet property="thirdCard" destination="eaW-LR-Zpq" id="l6Z-g0-g1o"/>
+                        <outlet property="thirdLabel" destination="EwT-3U-bLM" id="ruo-gW-MvD"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="18.840579710144929" y="87.723214285714278"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBlueColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemOrangeColor">
+            <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemPurpleColor">
+            <color red="0.68627450980392157" green="0.32156862745098042" blue="0.87058823529411766" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>
