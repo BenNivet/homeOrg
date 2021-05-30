@@ -45,6 +45,14 @@ enum Constants {
         static let cancelTitle = "Plus tard"
     }
     
+    struct AddDishAlert {
+        static let title = "Ajouter un plat"
+        static let subtitle = "Quel est le nom du plat ?"
+        static let placeholder = "Nom du plat"
+        static let actionTitle = "Ok"
+        static let cancelTitle = "Annuler"
+    }
+    
     static let days = [
         "Samedi",
         "Dimanche",

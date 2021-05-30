@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		816747CD2E30488F32C304B0 /* Pods_home_org.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 33EA5EEF22C11F850371B2E2 /* Pods_home_org.framework */; };
+		BC17643D2662869300D1E74F /* DishTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC17643B2662869300D1E74F /* DishTableViewCell.swift */; };
+		BC17643E2662869300D1E74F /* DishTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC17643C2662869300D1E74F /* DishTableViewCell.xib */; };
+		BC1764432662A7B100D1E74F /* DishViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1764422662A7B100D1E74F /* DishViewController.swift */; };
+		BC1764462662AC1000D1E74F /* Dish.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1764452662AC1000D1E74F /* Dish.swift */; };
 		BC711A5B2659270F00DBC736 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC711A5A2659270F00DBC736 /* AppDelegate.swift */; };
 		BC711A5D2659270F00DBC736 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC711A5C2659270F00DBC736 /* SceneDelegate.swift */; };
 		BC711A5F2659270F00DBC736 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC711A5E2659270F00DBC736 /* HomeViewController.swift */; };
@@ -33,6 +37,10 @@
 /* Begin PBXFileReference section */
 		33EA5EEF22C11F850371B2E2 /* Pods_home_org.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_home_org.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5BA51ADC68E1DF4A2B17D63F /* Pods-home-org.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-home-org.release.xcconfig"; path = "Target Support Files/Pods-home-org/Pods-home-org.release.xcconfig"; sourceTree = "<group>"; };
+		BC17643B2662869300D1E74F /* DishTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishTableViewCell.swift; sourceTree = "<group>"; };
+		BC17643C2662869300D1E74F /* DishTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DishTableViewCell.xib; sourceTree = "<group>"; };
+		BC1764422662A7B100D1E74F /* DishViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishViewController.swift; sourceTree = "<group>"; };
+		BC1764452662AC1000D1E74F /* Dish.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dish.swift; sourceTree = "<group>"; };
 		BC711A572659270F00DBC736 /* home-org.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "home-org.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC711A5A2659270F00DBC736 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BC711A5C2659270F00DBC736 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -87,6 +95,14 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		BC1764442662ABF900D1E74F /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				BC1764452662AC1000D1E74F /* Dish.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		BC711A4E2659270F00DBC736 = {
 			isa = PBXGroup;
 			children = (
@@ -110,6 +126,7 @@
 			children = (
 				BCA30441265941EC00F8E3A9 /* Components */,
 				BCA3042326592D1C00F8E3A9 /* Modules */,
+				BC1764442662ABF900D1E74F /* Models */,
 				BCA3042426592D3400F8E3A9 /* Config */,
 				BCA3042526592D4100F8E3A9 /* Ressources */,
 			);
@@ -197,8 +214,11 @@
 		BCA3043826593E2E00F8E3A9 /* Dishes */ = {
 			isa = PBXGroup;
 			children = (
+				BC1764422662A7B100D1E74F /* DishViewController.swift */,
 				BCA3043A26593E2E00F8E3A9 /* DishesViewController.swift */,
 				BCA3043926593E2E00F8E3A9 /* Dishes.storyboard */,
+				BC17643B2662869300D1E74F /* DishTableViewCell.swift */,
+				BC17643C2662869300D1E74F /* DishTableViewCell.xib */,
 			);
 			path = Dishes;
 			sourceTree = "<group>";
@@ -292,6 +312,7 @@
 				BCA30446265943E300F8E3A9 /* ScrollGrayView.xib in Resources */,
 				BCA3043B26593E2E00F8E3A9 /* Courses.storyboard in Resources */,
 				BCA3043F26593E2E00F8E3A9 /* Dishes.storyboard in Resources */,
+				BC17643E2662869300D1E74F /* DishTableViewCell.xib in Resources */,
 				BC711A6A2659271000DBC736 /* LaunchScreen.storyboard in Resources */,
 				BC711A672659271000DBC736 /* Assets.xcassets in Resources */,
 				BCA3044B265AB43000F8E3A9 /* CreateMenu.storyboard in Resources */,
@@ -374,8 +395,11 @@
 				BCA304442659424900F8E3A9 /* ScrollGrayView.swift in Sources */,
 				BCA3044A265AB43000F8E3A9 /* CreateMenuViewController.swift in Sources */,
 				BC711A5B2659270F00DBC736 /* AppDelegate.swift in Sources */,
+				BC1764432662A7B100D1E74F /* DishViewController.swift in Sources */,
 				BCA3043C26593E2E00F8E3A9 /* CoursesViewController.swift in Sources */,
+				BC1764462662AC1000D1E74F /* Dish.swift in Sources */,
 				BC711A5D2659270F00DBC736 /* SceneDelegate.swift in Sources */,
+				BC17643D2662869300D1E74F /* DishTableViewCell.swift in Sources */,
 				BCA3043026593A5D00F8E3A9 /* MenusViewController.swift in Sources */,
 				BCA3043D26593E2E00F8E3A9 /* InventoriesViewController.swift in Sources */,
 			);

@@ -40,7 +40,7 @@ class MenusViewController: UIViewController {
         let date = Date()
         let todayIndex = Calendar.current.dateComponents([.weekday], from: date).weekday ?? 0
         
-        firstDayLabel.text = Constants.days[todayIndex]
+        firstDayLabel.text = Constants.days[todayIndex % 7]
         secondDayLabel.text = Constants.days[(todayIndex + 1) % 7]
         thirdDayLabel.text = Constants.days[(todayIndex + 2) % 7]
         fourthDayLabel.text = Constants.days[(todayIndex + 3) % 7]

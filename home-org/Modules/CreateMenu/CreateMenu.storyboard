@@ -21,7 +21,6 @@
                                 <rect key="frame" x="0.0" y="44" width="414" height="18"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="18" id="Izt-jf-reR"/>
                                     <constraint firstAttribute="height" constant="18" id="rPd-of-xoE"/>
                                 </constraints>
                             </view>
