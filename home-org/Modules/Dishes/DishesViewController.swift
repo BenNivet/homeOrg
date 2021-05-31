@@ -7,6 +7,7 @@
 
 import UIKit
 import MaterialComponents
+import CoreData
 
 class DishesViewController: UIViewController {
     
@@ -16,14 +17,13 @@ class DishesViewController: UIViewController {
     
     let cellIdentifier = "DishCell"
     let dishSegueIdentifier = "dishSegue"
-    var dataArray = [String]()
+    var dishes = [Dish]()
     var selectedDish: Dish?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         initComponent()
-        fillData()        
-        noDishLabel.isHidden = !dataArray.isEmpty
+        updateData()
     }
     
     @IBAction func addDish() {
@@ -44,14 +44,16 @@ class DishesViewController: UIViewController {
     
     func goToDish(index: Int? = nil, name: String? = nil) {
         if let index = index,
-           dataArray.indices.contains(index) {
-            // Fetch dish in local DB
-            selectedDish = Dish(name: dataArray[index])
+           dishes.indices.contains(index) {
+            selectedDish = dishes[index]
             performSegue(withIdentifier: dishSegueIdentifier, sender: nil)
         } else if let name = name {
-            // Create dish in local DB
-            selectedDish = Dish(name: name)
-            performSegue(withIdentifier: dishSegueIdentifier, sender: nil)
+            do {
+                try saveDish(name: name)
+                performSegue(withIdentifier: dishSegueIdentifier, sender: nil)
+            } catch {
+                print(error)
+            }
         }
     }
     
@@ -75,21 +77,41 @@ class DishesViewController: UIViewController {
         tableView.register(dishCell,forCellReuseIdentifier: cellIdentifier)
     }
     
-    private func fillData() {
-        dataArray.append("Toto")
-        dataArray.append("Test d'un nom de plat assez long")
-        dataArray.append("Titi")
-        dataArray.append("Test d'un nom de plat assez long, voire beaucoup, beaucoup trop long !")
-        dataArray.append("Tabac")
-        dataArray.append("Un bon petit plat")
-        dataArray.append("Plat test")
+    private func updateData() {
+        dishes = fetchDishes()
+        noDishLabel.isHidden = !dishes.isEmpty
         tableView.reloadData()
+    }
+    
+    func fetchDishes() -> [Dish] {
+        let mainContext = CoreDataManager.shared.mainContext
+        let fetchRequest: NSFetchRequest<Dish> = Dish.fetchRequest()
+        do {
+            let results = try mainContext.fetch(fetchRequest)
+            return results
+        }
+        catch {
+            print(error)
+        }
+        return []
+    }
+    
+    func saveDish(name: String) throws {
+        let context = CoreDataManager.shared.mainContext
+        let entity = Dish.entity()
+        let dish = Dish(entity: entity, insertInto: context)
+        dish.name = name
+        dish.ingredients = []
+        dishes.append(dish)
+        selectedDish = dish
+        try context.save()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == dishSegueIdentifier {
             if let vc = segue.destination as? DishViewController {
                 vc.dish = selectedDish
+                vc.delegate = self
             }
         }
     }
@@ -97,19 +119,26 @@ class DishesViewController: UIViewController {
 
 extension DishesViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return dataArray.count
+        return dishes.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier) as? DishTableViewCell else {
             return UITableViewCell()
         }
-        
-        cell.dishTitle.text = dataArray[indexPath.row]
+        let dish = dishes[indexPath.row]
+        cell.dishTitle.text = dish.name
+        cell.dish = dish
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         goToDish(index: indexPath.row)
+    }
+}
+
+extension DishesViewController: DishViewControllerDelegate {
+    func handleClose(_ needUpdate: Bool) {
+        needUpdate ? updateData() : nil
     }
 }

@@ -7,7 +7,6 @@
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
-        <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -108,7 +107,7 @@
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="riM-8q-jzs">
                                                 <rect key="frame" x="10" y="10" width="354" height="105"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="Yew-Oo-Xhg"/>
+                                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="75" id="Yew-Oo-Xhg"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="22"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -123,7 +122,7 @@
                                             <constraint firstAttribute="bottom" secondItem="riM-8q-jzs" secondAttribute="bottom" constant="10" id="i2U-DW-88w"/>
                                         </constraints>
                                         <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="boolean" keyPath="interactable" value="NO"/>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="interactable" value="YES"/>
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9Kh-Dy-Y86" customClass="MDCCard">
@@ -138,12 +137,27 @@
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
+                                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="JYx-kS-Mi2">
+                                                <rect key="frame" x="10" y="40" width="354" height="262.5"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="MTG-cB-hCz" customClass="MDCChipCollectionViewFlowLayout">
+                                                    <size key="itemSize" width="128" height="128"/>
+                                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                </collectionViewFlowLayout>
+                                                <cells/>
+                                            </collectionView>
                                         </subviews>
                                         <color key="backgroundColor" name="DishColor"/>
                                         <constraints>
                                             <constraint firstItem="EtK-EX-sc0" firstAttribute="leading" secondItem="9Kh-Dy-Y86" secondAttribute="leading" constant="10" id="Iou-jG-E9z"/>
                                             <constraint firstAttribute="trailing" secondItem="EtK-EX-sc0" secondAttribute="trailing" constant="10" id="RKZ-3H-98d"/>
                                             <constraint firstItem="EtK-EX-sc0" firstAttribute="top" secondItem="9Kh-Dy-Y86" secondAttribute="top" constant="10" id="TlV-Ax-tsI"/>
+                                            <constraint firstAttribute="bottom" secondItem="JYx-kS-Mi2" secondAttribute="bottom" constant="10" id="Xtf-q5-SmI"/>
+                                            <constraint firstItem="JYx-kS-Mi2" firstAttribute="leading" secondItem="9Kh-Dy-Y86" secondAttribute="leading" constant="10" id="bDp-Ra-e0l"/>
+                                            <constraint firstAttribute="trailing" secondItem="JYx-kS-Mi2" secondAttribute="trailing" constant="10" id="iqY-od-Xcm"/>
+                                            <constraint firstItem="JYx-kS-Mi2" firstAttribute="top" secondItem="EtK-EX-sc0" secondAttribute="bottom" constant="10" id="nEn-yB-h71"/>
                                         </constraints>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="boolean" keyPath="interactable" value="NO"/>
@@ -164,22 +178,13 @@
                                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Ym0-P4-ERh">
                                                 <rect key="frame" x="10" y="35" width="354" height="267.5"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="fDu-87-rvM">
+                                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="fDu-87-rvM" customClass="MDCChipCollectionViewFlowLayout">
                                                     <size key="itemSize" width="128" height="128"/>
                                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                 </collectionViewFlowLayout>
-                                                <cells>
-                                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="V3C-y4-yMv">
-                                                        <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
-                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="juN-xd-MvH">
-                                                            <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
-                                                            <autoresizingMask key="autoresizingMask"/>
-                                                        </collectionViewCellContentView>
-                                                    </collectionViewCell>
-                                                </cells>
+                                                <cells/>
                                             </collectionView>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemOrangeColor"/>
@@ -198,7 +203,6 @@
                                     </view>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="7fx-R5-UEe" firstAttribute="height" secondItem="9Kh-Dy-Y86" secondAttribute="height" multiplier="2:5" id="ILX-gf-IYp"/>
                                     <constraint firstItem="9Kh-Dy-Y86" firstAttribute="height" secondItem="wb1-Uq-794" secondAttribute="height" id="XKi-ea-wqL"/>
                                 </constraints>
                             </stackView>
@@ -216,7 +220,9 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="chipsCollectionView" destination="Ym0-P4-ERh" id="gMu-B2-NIS"/>
+                        <outlet property="dishCard" destination="7fx-R5-UEe" id="Mpv-gH-ozA"/>
+                        <outlet property="ingredientsChipsCollectionView" destination="JYx-kS-Mi2" id="qWp-Yh-i37"/>
+                        <outlet property="suggestChipsCollectionView" destination="Ym0-P4-ERh" id="vNK-1i-Tgt"/>
                         <outlet property="titleLabel" destination="riM-8q-jzs" id="zyb-6B-ybp"/>
                     </connections>
                 </viewController>

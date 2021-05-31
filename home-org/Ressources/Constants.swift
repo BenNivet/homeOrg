@@ -49,7 +49,22 @@ enum Constants {
         static let title = "Ajouter un plat"
         static let subtitle = "Quel est le nom du plat ?"
         static let placeholder = "Nom du plat"
-        static let actionTitle = "Ok"
+        static let actionTitle = "Valider"
+        static let cancelTitle = "Annuler"
+    }
+    
+    struct RenameDishAlert {
+        static let title = "Renommer le plat"
+        static let subtitle = "Quel est le nom du plat ?"
+        static let actionTitle = "Valider"
+        static let cancelTitle = "Annuler"
+    }
+    
+    struct AddIngredientAlert {
+        static let title = "Ajouter un ingrédient"
+        static let subtitle = "Quel est le nom de l'ingrédient ?"
+        static let placeholder = "Nom de l'ingrédient"
+        static let actionTitle = "Valider"
         static let cancelTitle = "Annuler"
     }
     

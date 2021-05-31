@@ -10,50 +10,20 @@ import MaterialComponents
 
 class DishTableViewCell: UITableViewCell {
     
-    @IBOutlet weak var card: MDCCard!
+    @IBOutlet private weak var card: MDCCard!
     @IBOutlet weak var dishTitle: UILabel!
     @IBOutlet private weak var chipsCollectionView: UICollectionView!
-    var dataArray = [String]()
-
+    var dish: Dish?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         initComponent()
-        fillData()
     }
     
     private func initComponent() {
         selectionStyle = .none
         chipsCollectionView.register(MDCChipCollectionViewCell.self, forCellWithReuseIdentifier: "DishChip")
         chipsCollectionView.dataSource = self
-    }
-    
-    private func fillData() {
-        if arc4random_uniform(2) == 0 {
-            dataArray.append("Poulet")
-            dataArray.append("Riz")
-            dataArray.append("Poivrons")
-        }
-        
-        if arc4random_uniform(2) == 0 {
-            dataArray.append("Viande haché")
-            dataArray.append("Pâtes fraiches")
-        }
-        
-        if arc4random_uniform(2) == 0 {
-            dataArray.append("Crevettes")
-            dataArray.append("Avocat")
-        }
-        
-        if arc4random_uniform(2) == 0 {
-            dataArray.append("Surimi")
-            dataArray.append("Taboulé")
-        }
-        
-        if arc4random_uniform(2) == 0 {
-            dataArray.append("Banane")
-            dataArray.append("Nutella")
-        }
-        chipsCollectionView.reloadData()
     }
     
     override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
@@ -63,17 +33,18 @@ class DishTableViewCell: UITableViewCell {
 
 extension DishTableViewCell: UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return dataArray.count
+        return dish?.ingredients?.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "DishChip", for: indexPath) as? MDCChipCollectionViewCell else {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "DishChip", for: indexPath) as? MDCChipCollectionViewCell,
+              let ingredients = dish?.ingredients else {
             return UICollectionViewCell()            
         }
         
         let chipView = cell.chipView
         chipView.sizeToFit()
-        chipView.titleLabel.text = dataArray[indexPath.row]
+        chipView.titleLabel.text = ingredients[indexPath.row]
         chipView.setBackgroundColor(UIColor(named: "MainColor"), for: .normal)
         chipView.setTitleColor(UIColor.white, for: .normal)
         

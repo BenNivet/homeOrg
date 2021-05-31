@@ -9,10 +9,10 @@ import UIKit
 import MaterialComponents
 
 class CoursesViewController: UIViewController {
-
+    
     @IBOutlet weak var addButton: MDCFloatingButton!
     @IBOutlet weak var noCourseLabel: UILabel!
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         noCourseLabel.text = Constants.LabelTitle.noCourse
