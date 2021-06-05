@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="18154" systemVersion="20E241" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Dish" representedClassName="Dish" syncable="YES" codeGenerationType="class">
+        <attribute name="count" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="ingredients" optional="YES" attributeType="Transformable" customClassName="[String]"/>
         <attribute name="name" attributeType="String" defaultValueString=""/>
     </entity>
@@ -8,8 +9,15 @@
         <attribute name="count" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="name" attributeType="String" defaultValueString=""/>
     </entity>
+    <entity name="Menu" representedClassName="Menu" syncable="YES" codeGenerationType="class">
+        <attribute name="courseDay" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+        <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="midi" optional="YES" attributeType="Transformable" customClassName="[String]"/>
+        <attribute name="soir" optional="YES" attributeType="Transformable" customClassName="[String]"/>
+    </entity>
     <elements>
+        <element name="Dish" positionX="-54" positionY="-9" width="128" height="74"/>
         <element name="Ingredient" positionX="-63" positionY="-18" width="128" height="59"/>
-        <element name="Dish" positionX="-54" positionY="-9" width="128" height="59"/>
+        <element name="Menu" positionX="-54" positionY="9" width="128" height="89"/>
     </elements>
 </model>

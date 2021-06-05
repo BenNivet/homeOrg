@@ -13,7 +13,11 @@ class DishTableViewCell: UITableViewCell {
     @IBOutlet private weak var card: MDCCard!
     @IBOutlet weak var dishTitle: UILabel!
     @IBOutlet private weak var chipsCollectionView: UICollectionView!
-    var dish: Dish?
+    var dish: Dish? {
+        didSet {
+            chipsCollectionView.reloadData()
+        }
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -45,11 +49,11 @@ extension DishTableViewCell: UICollectionViewDataSource, UICollectionViewDelegat
         let chipView = cell.chipView
         chipView.sizeToFit()
         chipView.titleLabel.text = ingredients[indexPath.row]
-        chipView.setBackgroundColor(UIColor(named: "MainColor"), for: .normal)
-        chipView.setTitleColor(UIColor.white, for: .normal)
+        chipView.setBackgroundColor(UIColor.white, for: .normal)
+        chipView.setTitleColor(UIColor.black, for: .normal)
         
-        chipView.setBackgroundColor(UIColor(named: "MainColor"), for: .selected)
-        chipView.setTitleColor(UIColor.white, for: .selected)
+        chipView.setBackgroundColor(UIColor.white, for: .selected)
+        chipView.setTitleColor(UIColor.black, for: .selected)
         
         return cell
     }

@@ -24,8 +24,4 @@ class CoreDataManager {
     var mainContext: NSManagedObjectContext {
         return persistentContainer.viewContext
     }
-    
-    func backgroundContext() -> NSManagedObjectContext {
-        return persistentContainer.newBackgroundContext()
-    }
 }

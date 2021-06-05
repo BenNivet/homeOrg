@@ -29,6 +29,7 @@ enum Constants {
         static let addCourse = "Ajouter un article"
         static let addDish = "Ajouter un plat"
         static let addInventory = "Créer un inventaire"
+        static let deleteMenu = "Supprimer"
     }
     
     struct LabelTitle {
@@ -68,6 +69,18 @@ enum Constants {
         static let cancelTitle = "Annuler"
     }
     
+    struct createMenu {
+        static let question = "Qu'avez vous envie de manger ?"
+    }
+    
+    struct AddDishToMenuAlert {
+        static let title = "Ajouter un plat"
+        static let subtitle = "Pour quel repas ?"
+        static let placeholder = "Nom du plat"
+        static let actionTitle1 = "Midi"
+        static let actionTitle2 = "Soir"
+    }
+    
     static let days = [
         "Samedi",
         "Dimanche",
@@ -77,8 +90,4 @@ enum Constants {
         "Jeudi",
         "Vendredi"
     ]
-    
-    struct createMenu {
-        static let question = "Qu'avez vous envie de manger ?"
-    }
 }

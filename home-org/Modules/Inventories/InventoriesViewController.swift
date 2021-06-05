@@ -24,6 +24,7 @@ class InventoriesViewController: UIViewController {
         let alert = UIAlertController(title: Constants.InventoryAlert.title, message: Constants.InventoryAlert.subtitle, preferredStyle: .alert)
         alert.addTextField { textField in
             textField.placeholder = Constants.InventoryAlert.placeholder
+            textField.autocapitalizationType = .sentences
         }
         alert.addAction(UIAlertAction(title: Constants.InventoryAlert.actionTitle, style: .default, handler: { [weak self] action in
             guard let textField =  alert.textFields?.first else {

@@ -19,9 +19,9 @@ class DishViewController: UIViewController {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet private weak var ingredientsChipsCollectionView: UICollectionView!
     @IBOutlet private weak var suggestChipsCollectionView: UICollectionView!
-    weak var delegate: DishViewControllerDelegate?
     
-    var needUpdate = false
+    weak var delegate: DishViewControllerDelegate?
+    private var needUpdate = false
     
     var dish: Dish?
     var ingredients = [Ingredient]()
@@ -42,31 +42,31 @@ class DishViewController: UIViewController {
         let alert = UIAlertController(title: Constants.RenameDishAlert.title, message: Constants.RenameDishAlert.subtitle, preferredStyle: .alert)
         alert.addTextField { [weak self] textField in
             textField.text = self?.dish?.name
+            textField.autocapitalizationType = .sentences
         }
         alert.addAction(UIAlertAction(title: Constants.AddDishAlert.actionTitle, style: .default, handler: { [weak self] action in
             guard let textField =  alert.textFields?.first,
                   let name = textField.text else {
                 return
             }
-            do {
-                try self?.updateName(name)
-                self?.titleLabel.text = name
-            } catch {
-                print(error)
-            }
+            self?.updateName(name)
+            self?.titleLabel.text = name
         }))
         alert.addAction(UIAlertAction(title: Constants.AddDishAlert.cancelTitle, style: .cancel, handler: nil))
         
         present(alert, animated: true, completion: nil)
     }
     
-    func updateName(_ name: String) throws {
+    func updateName(_ name: String) {
         guard let dish = dish else { return }
-        
         let context = CoreDataManager.shared.mainContext
-        needUpdate = true
-        dish.name = name
-        try context.save()
+        do {
+            needUpdate = true
+            dish.name = name
+            try context.save()
+        } catch {
+            print(error)
+        }
     }
     
     private func initComponent() {
@@ -104,6 +104,7 @@ class DishViewController: UIViewController {
     func fetchSuggestions() -> [Ingredient] {
         let mainContext = CoreDataManager.shared.mainContext
         let fetchRequest: NSFetchRequest<Ingredient> = Ingredient.fetchRequest()
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "count", ascending: false)]
         do {
             let results = try mainContext.fetch(fetchRequest)
             return results
@@ -118,53 +119,79 @@ class DishViewController: UIViewController {
         let alert = UIAlertController(title: Constants.AddIngredientAlert.title, message: Constants.AddIngredientAlert.subtitle, preferredStyle: .alert)
         alert.addTextField { textField in
             textField.placeholder = Constants.AddIngredientAlert.placeholder
+            textField.autocapitalizationType = .sentences
         }
         alert.addAction(UIAlertAction(title: Constants.AddIngredientAlert.actionTitle, style: .default, handler: { [weak self] action in
             guard let textField =  alert.textFields?.first,
                   let name = textField.text else {
                 return
             }
-            do {
-                try self?.createIngredient(name)
-                self?.fetchData()
-            } catch {
-                print(error)
-            }
+            self?.createIngredient(name)
+            self?.fetchData()
         }))
         alert.addAction(UIAlertAction(title: Constants.AddDishAlert.cancelTitle, style: .cancel, handler: nil))
         
         present(alert, animated: true, completion: nil)
     }
     
-    private func createIngredient(_ name: String) throws {
+    private func createIngredient(_ name: String) {
         guard let dish = dish else { return }
         
         if suggestions.compactMap({ $0.name }).contains(name) {
             dish.ingredients?.append(name)
         } else {
-            let context = CoreDataManager.shared.mainContext
-           
-            let entity = Ingredient.entity()
-            let ingredient = Ingredient(entity: entity, insertInto: context)
-            ingredient.name = name
-            dish.ingredients?.append(name)
-            
-            try context.save()
+            do {
+                let context = CoreDataManager.shared.mainContext
+                
+                let entity = Ingredient.entity()
+                let ingredient = Ingredient(entity: entity, insertInto: context)
+                ingredient.name = name
+                ingredient.count += 1
+                dish.ingredients?.append(name)
+                
+                try context.save()
+            }
+            catch {
+                print(error)
+            }
         }
         needUpdate = true
     }
     
-    private func addIngredient(_ ingredient: Ingredient) throws {
+    private func addIngredient(_ ingredient: Ingredient) {
         guard let dish = dish,
               let name = ingredient.name,
-              !(dish.ingredients?.contains(name) ?? false) else { return }
+              !(dish.ingredients?.contains(name) ?? true) else { return }
         
-        let context = CoreDataManager.shared.mainContext
-        dish.ingredients?.append(name)
-        ingredient.count += 1
+        do {
+            let context = CoreDataManager.shared.mainContext
+            dish.ingredients?.append(name)
+            ingredient.count += 1
+            
+            try context.save()
+            needUpdate = true
+        }
+        catch {
+            print(error)
+        }
+    }
+    
+    private func removeIngredient(_ ingredient: Ingredient) {
+        guard let dish = dish,
+              let name = ingredient.name,
+              (dish.ingredients?.contains(name) ?? false) else { return }
         
-        try context.save()
-        needUpdate = true
+        do {
+            let context = CoreDataManager.shared.mainContext
+            dish.ingredients = dish.ingredients?.filter({ $0 != name })
+            ingredient.count -= 1
+            
+            try context.save()
+            needUpdate = true
+        }
+        catch {
+            print(error)
+        }
     }
 }
 
@@ -205,30 +232,31 @@ extension DishViewController: UICollectionViewDataSource, UICollectionViewDelega
             chipView.titleLabel.text = suggestions[indexPath.row].name
         }
         
-        chipView.setBackgroundColor(UIColor(named: "MainColor"), for: .normal)
-        chipView.setTitleColor(UIColor.white, for: .normal)
+        chipView.setBackgroundColor(UIColor.white, for: .normal)
+        chipView.setTitleColor(UIColor.black, for: .normal)
         
-        chipView.setBackgroundColor(UIColor(named: "MainColor"), for: .selected)
-        chipView.setTitleColor(UIColor.white, for: .selected)
+        chipView.setBackgroundColor(UIColor.white, for: .selected)
+        chipView.setTitleColor(UIColor.black, for: .selected)
         
         return chipCell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if collectionView == ingredientsChipsCollectionView {
+            ingredientsChipsCollectionView.deselectItem(at: indexPath, animated: true)
             if indexPath.row >= ingredients.count {
                 displayAddIngredientAlert()
+            } else {
+                if ingredients.indices.contains(indexPath.row) {
+                    removeIngredient(ingredients[indexPath.row])
+                    fetchData()
+                }
             }
-            ingredientsChipsCollectionView.deselectItem(at: indexPath, animated: true)
         } else if collectionView == suggestChipsCollectionView {
             suggestChipsCollectionView.deselectItem(at: indexPath, animated: true)
             if suggestions.indices.contains(indexPath.row) {
-                do {
-                    try addIngredient(suggestions[indexPath.row])
-                    fetchData()
-                } catch {
-                    print(error)
-                }
+                addIngredient(suggestions[indexPath.row])
+                fetchData()
             }
         }
     }

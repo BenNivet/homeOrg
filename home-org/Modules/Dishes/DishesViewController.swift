@@ -30,6 +30,7 @@ class DishesViewController: UIViewController {
         let alert = UIAlertController(title: Constants.AddDishAlert.title, message: Constants.AddDishAlert.subtitle, preferredStyle: .alert)
         alert.addTextField { textField in
             textField.placeholder = Constants.AddDishAlert.placeholder
+            textField.autocapitalizationType = .sentences
         }
         alert.addAction(UIAlertAction(title: Constants.AddDishAlert.actionTitle, style: .default, handler: { [weak self] action in
             guard let textField =  alert.textFields?.first else {
@@ -48,12 +49,9 @@ class DishesViewController: UIViewController {
             selectedDish = dishes[index]
             performSegue(withIdentifier: dishSegueIdentifier, sender: nil)
         } else if let name = name {
-            do {
-                try saveDish(name: name)
-                performSegue(withIdentifier: dishSegueIdentifier, sender: nil)
-            } catch {
-                print(error)
-            }
+            saveDish(name: name)
+            updateData()
+            performSegue(withIdentifier: dishSegueIdentifier, sender: nil)
         }
     }
     
@@ -83,11 +81,12 @@ class DishesViewController: UIViewController {
         tableView.reloadData()
     }
     
-    func fetchDishes() -> [Dish] {
-        let mainContext = CoreDataManager.shared.mainContext
+    private func fetchDishes() -> [Dish] {
+        let context = CoreDataManager.shared.mainContext
         let fetchRequest: NSFetchRequest<Dish> = Dish.fetchRequest()
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "count", ascending: false)]
         do {
-            let results = try mainContext.fetch(fetchRequest)
+            let results = try context.fetch(fetchRequest)
             return results
         }
         catch {
@@ -96,15 +95,52 @@ class DishesViewController: UIViewController {
         return []
     }
     
-    func saveDish(name: String) throws {
+    func saveDish(name: String) {
         let context = CoreDataManager.shared.mainContext
         let entity = Dish.entity()
         let dish = Dish(entity: entity, insertInto: context)
-        dish.name = name
-        dish.ingredients = []
-        dishes.append(dish)
-        selectedDish = dish
-        try context.save()
+        do {
+            dish.name = name
+            dish.ingredients = []
+            dishes.append(dish)
+            selectedDish = dish
+            try context.save()
+        }
+        catch {
+            print(error)
+        }
+    }
+    
+    private func removeDish(_ dish: Dish) {
+        do {
+            removeDishInMenus(dish)
+            let context = CoreDataManager.shared.mainContext
+            context.delete(dish)
+            try context.save()
+        }
+        catch {
+            print(error)
+        }
+    }
+    
+    private func removeDishInMenus(_ dish: Dish) {
+        let context = CoreDataManager.shared.mainContext
+        let fetchRequest: NSFetchRequest<Menu> = Menu.fetchRequest()
+        do {
+            let results = try context.fetch(fetchRequest)
+            for menu in results {
+                if let midi = menu.midi {
+                    menu.midi = midi.filter({ $0 != dish.name })
+                }
+                if let soir = menu.soir {
+                    menu.soir = soir.filter({ $0 != dish.name })
+                }
+            }
+            try context.save()
+        }
+        catch {
+            print(error)
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -117,7 +153,7 @@ class DishesViewController: UIViewController {
     }
 }
 
-extension DishesViewController: UITableViewDelegate, UITableViewDataSource {
+extension DishesViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return dishes.count
     }
@@ -134,6 +170,28 @@ extension DishesViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         goToDish(index: indexPath.row)
+    }
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+}
+    
+extension DishesViewController: UITableViewDelegate {
+    private func deleteDish(at indexPath: IndexPath) {
+        guard dishes.indices.contains(indexPath.row) else { return }
+        removeDish(dishes[indexPath.row])
+        dishes.remove(at: indexPath.row)
+        tableView.beginUpdates()
+        tableView.deleteRows(at: [indexPath], with: .automatic)
+        tableView.endUpdates()
+    }
+    
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        return UISwipeActionsConfiguration(actions: [UIContextualAction(style: .destructive, title: "Delete") { (action, swipeButtonView, completion) in
+            self.deleteDish(at: indexPath)
+            completion(true)
+        }])
     }
 }
 

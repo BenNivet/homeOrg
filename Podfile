@@ -8,10 +8,7 @@ target 'home-org' do
   # Inhibit compilation warnings in Xcode for all pods
   inhibit_all_warnings!
   
-  pod 'SwiftLint'
   pod 'Firebase/Analytics'
   pod 'Firebase/Messaging'
-  pod 'Material'
   pod 'MaterialComponents'
-  pod 'KeychainAccess'
 end
