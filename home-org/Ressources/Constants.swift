@@ -69,6 +69,14 @@ enum Constants {
         static let cancelTitle = "Annuler"
     }
     
+    struct AddArticleAlert {
+        static let title = "Ajouter un article"
+        static let subtitle = "Quel est le nom de l'article ?"
+        static let placeholder = "Nom de l'article"
+        static let actionTitle = "Valider"
+        static let cancelTitle = "Annuler"
+    }
+    
     struct createMenu {
         static let question = "Qu'avez vous envie de manger ?"
     }

@@ -15,7 +15,7 @@ class DishesViewController: UIViewController {
     @IBOutlet weak var noDishLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
     
-    let cellIdentifier = "DishCell"
+    private let cellIdentifier = "DishCell"
     let dishSegueIdentifier = "dishSegue"
     var dishes = [Dish]()
     var selectedDish: Dish?

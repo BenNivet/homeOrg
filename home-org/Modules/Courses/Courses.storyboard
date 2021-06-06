@@ -25,6 +25,17 @@
                                     <constraint firstAttribute="height" constant="18" id="WlF-E7-9GR"/>
                                 </constraints>
                             </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelectionDuringEditing="YES" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="RvJ-RO-uDJ">
+                                <rect key="frame" x="10" y="128" width="394" height="724"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <sections/>
+                            </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ugA-fN-J7E">
+                                <rect key="frame" x="20" y="82" width="374" height="36"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9ty-nS-0Hb" customClass="MDCFloatingButton">
                                 <rect key="frame" x="197" y="784" width="187" height="48"/>
                                 <color key="backgroundColor" name="MainColor"/>
@@ -56,21 +67,30 @@
                             <constraint firstItem="5Og-vo-z38" firstAttribute="centerY" secondItem="5EZ-qb-Rvc" secondAttribute="centerY" id="1aC-3G-hrg"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="9ty-nS-0Hb" secondAttribute="bottom" constant="30" id="8bl-fL-JJG"/>
                             <constraint firstItem="uSb-8K-rTX" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="OFM-q6-kOv"/>
+                            <constraint firstItem="ugA-fN-J7E" firstAttribute="top" secondItem="uSb-8K-rTX" secondAttribute="bottom" constant="20" id="OgX-bf-s2X"/>
+                            <constraint firstItem="RvJ-RO-uDJ" firstAttribute="top" secondItem="ugA-fN-J7E" secondAttribute="bottom" constant="10" id="SJL-mT-aYg"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="RvJ-RO-uDJ" secondAttribute="trailing" constant="10" id="Smp-v6-jZw"/>
                             <constraint firstItem="uSb-8K-rTX" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="TJ3-pQ-V7z"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="5Og-vo-z38" secondAttribute="trailing" constant="20" id="Txd-yw-ASW"/>
+                            <constraint firstItem="ugA-fN-J7E" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="Vfx-vv-arJ"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="9ty-nS-0Hb" secondAttribute="trailing" constant="30" id="XBh-F6-LSL"/>
+                            <constraint firstItem="RvJ-RO-uDJ" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="10" id="Xrv-U5-oxF"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="ugA-fN-J7E" secondAttribute="trailing" constant="20" id="dZ8-bd-psQ"/>
                             <constraint firstItem="5Og-vo-z38" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="ktA-O9-6xa"/>
                             <constraint firstItem="uSb-8K-rTX" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="nf2-7N-20Y"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="RvJ-RO-uDJ" secondAttribute="bottom" constant="10" id="ov8-WT-dg5"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="addButton" destination="9ty-nS-0Hb" id="aLY-eD-drf"/>
                         <outlet property="noCourseLabel" destination="5Og-vo-z38" id="yFw-BM-q6x"/>
+                        <outlet property="tableView" destination="RvJ-RO-uDJ" id="Jun-vm-Bgc"/>
+                        <outlet property="titleLabel" destination="ugA-fN-J7E" id="2rZ-y4-ewL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="80" y="54"/>
+            <point key="canvasLocation" x="79.710144927536234" y="53.571428571428569"/>
         </scene>
     </scenes>
     <resources>

@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="18154" systemVersion="20E241" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Course" representedClassName="Course" syncable="YES" codeGenerationType="class">
+        <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="others" optional="YES" attributeType="Transformable" customClassName="[String]"/>
+    </entity>
     <entity name="Dish" representedClassName="Dish" syncable="YES" codeGenerationType="class">
         <attribute name="count" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="ingredients" optional="YES" attributeType="Transformable" customClassName="[String]"/>
@@ -19,5 +23,6 @@
         <element name="Dish" positionX="-54" positionY="-9" width="128" height="74"/>
         <element name="Ingredient" positionX="-63" positionY="-18" width="128" height="59"/>
         <element name="Menu" positionX="-54" positionY="9" width="128" height="89"/>
+        <element name="Course" positionX="-54" positionY="27" width="128" height="59"/>
     </elements>
 </model>

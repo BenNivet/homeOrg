@@ -23,32 +23,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "607CB023-517C-4BF5-81B9-4A8D3CF1FF84"
+            uuid = "89E5044D-EECD-4334-9E66-BE9420DA91A9"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "home-org/Modules/Dishes/DishesViewController.swift"
+            filePath = "home-org/Modules/Courses/CoursesViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "172"
-            endingLineNumber = "172"
-            landmarkName = "tableView(_:didSelectRowAt:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "05607C07-D9CB-4D9B-82DD-480BE8D360BD"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "home-org/Modules/Dishes/DishesViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "182"
-            endingLineNumber = "182"
-            landmarkName = "deleteDish(at:)"
+            startingLineNumber = "174"
+            endingLineNumber = "174"
+            landmarkName = "getAllIngredients()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
