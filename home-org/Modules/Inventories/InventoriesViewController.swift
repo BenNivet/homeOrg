@@ -18,6 +18,7 @@ class InventoriesViewController: UIViewController {
         noInventoryLabel.text = Constants.LabelTitle.noInventory
         addButton.setTitle(Constants.ButtonTitle.addInventory.uppercased(), for: .normal)
         addButton.mode = .expanded
+        addButton.reloadInputViews()
     }
     
     @IBAction func addInventory() {

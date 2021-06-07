@@ -31,13 +31,13 @@
                                 <sections/>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5w6-2q-OmV" customClass="MDCFloatingButton">
-                                <rect key="frame" x="197" y="784" width="187" height="48"/>
+                                <rect key="frame" x="264" y="784" width="120" height="48"/>
                                 <color key="backgroundColor" name="MainColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="48" id="mwy-dD-u3v"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                <state key="normal" title="Ajouter un truc/machin">
+                                <state key="normal" title="Ajouter un plat">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>

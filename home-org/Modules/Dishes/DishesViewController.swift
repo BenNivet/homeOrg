@@ -68,6 +68,7 @@ class DishesViewController: UIViewController {
         
         addButton.setTitle(Constants.ButtonTitle.addDish.uppercased(), for: .normal)
         addButton.mode = .expanded
+        addButton.reloadInputViews()
     }
     
     private func registerTableViewCells() {

@@ -69,6 +69,7 @@ class CoursesViewController: UIViewController {
         noCourseLabel.text = Constants.LabelTitle.noCourse
         addButton.setTitle(Constants.ButtonTitle.addCourse.uppercased(), for: .normal)
         addButton.mode = .expanded
+        addButton.reloadInputViews()
         
         tableView.delegate = self
         tableView.dataSource = self

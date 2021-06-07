@@ -37,13 +37,13 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9ty-nS-0Hb" customClass="MDCFloatingButton">
-                                <rect key="frame" x="197" y="784" width="187" height="48"/>
+                                <rect key="frame" x="243" y="784" width="141" height="48"/>
                                 <color key="backgroundColor" name="MainColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="48" id="CRM-8R-4hd"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                <state key="normal" title="Ajouter un truc/machin">
+                                <state key="normal" title="Ajouter un article">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
