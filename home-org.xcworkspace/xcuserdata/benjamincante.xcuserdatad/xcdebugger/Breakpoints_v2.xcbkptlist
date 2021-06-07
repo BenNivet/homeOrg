@@ -23,16 +23,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "89E5044D-EECD-4334-9E66-BE9420DA91A9"
+            uuid = "30CD56DB-2D32-4400-BE4B-44E0A7CD520A"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "home-org/Modules/Courses/CoursesViewController.swift"
+            filePath = "home-org/Modules/Courses/ArticleTableViewCell.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "174"
-            endingLineNumber = "174"
-            landmarkName = "getAllIngredients()"
+            startingLineNumber = "48"
+            endingLineNumber = "48"
+            landmarkName = "tap()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

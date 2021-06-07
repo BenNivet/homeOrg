@@ -10,7 +10,7 @@ import MaterialComponents
 import CoreData
 
 protocol CreateMenuViewControllerDelegate: AnyObject {
-    func handleClose(_ needUpdate: Bool)
+    func handleClose(_ name: Bool)
 }
 
 class CreateMenuViewController: UIViewController {

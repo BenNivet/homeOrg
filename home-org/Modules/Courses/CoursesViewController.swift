@@ -25,6 +25,7 @@ class CoursesViewController: UIViewController {
     private var courseDay: Date?
     private var secondCourseDay: Date?
     private var allIngredients = [String]()
+    private var checkedIngredients = [String]()
     
     private var today: Date {
         Calendar.current.startOfDay(for: Date())
@@ -58,6 +59,7 @@ class CoursesViewController: UIViewController {
             }
         } else {
             titleLabel.text = "Rien de prévu"
+            addButton.isEnabled = false
         }
         allDishes = fetchDishes()
         updateData()
@@ -138,6 +140,7 @@ class CoursesViewController: UIViewController {
         let course = Course(entity: entity, insertInto: context)
         course.date = courseDay
         course.others = []
+        course.checked = []
         
         do {
             try context.save()
@@ -167,11 +170,15 @@ class CoursesViewController: UIViewController {
         
         if let course = course {
             ingredients.append(contentsOf: course.others ?? [])
+            checkedIngredients = (course.checked ?? []).filter({ ingredients.contains($0) }).sorted()
         }
         
-        ingredients = Array(Set(ingredients))
+        ingredients = Array(Set(ingredients)).sorted()
+        ingredients = ingredients.filter({ !checkedIngredients.contains($0) })
         
-        return ingredients.sorted()
+        ingredients.append(contentsOf: self.checkedIngredients)
+        
+        return ingredients
     }
     
     private func displayAddArticleAlert() {
@@ -207,6 +214,39 @@ class CoursesViewController: UIViewController {
         }
     }
     
+    private func removeArticle(_ name: String) {
+        guard let course = course else { return }
+        
+        let context = CoreDataManager.shared.mainContext
+        course.others = course.others?.filter({ $0 != name })
+        
+        do {
+            try context.save()
+        }
+        catch {
+            print(error)
+        }
+    }
+    
+    private func updateArticle(_ name: String) {
+        guard let course = course else { return }
+        
+        let context = CoreDataManager.shared.mainContext
+        
+        if course.checked?.contains(name) ?? false {
+            course.checked = course.checked?.filter({ $0 != name })
+        } else {
+            course.checked?.append(name)
+        }
+        
+        do {
+            try context.save()
+        }
+        catch {
+            print(error)
+        }
+    }
+    
     @IBAction func addArticle() {
         displayAddArticleAlert()
     }    
@@ -221,8 +261,25 @@ extension CoursesViewController: UITableViewDataSource, UITableViewDelegate {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier) as? ArticleTableViewCell else {
             return UITableViewCell()
         }
+        
         let article = allIngredients[indexPath.row]
         cell.articleTitle.text = article
+        cell.updateData(isChecked: checkedIngredients.contains(article))
+        cell.delegate = self
+        
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard allIngredients.indices.contains(indexPath.row) else { return }
+        updateArticle(allIngredients[indexPath.row])
+        updateData()
+    }
+}
+
+extension CoursesViewController: ArticleTableViewCellDelegate {
+    func didSelectArticle(_ name: String) {
+        updateArticle(name)
+        updateData()
     }
 }

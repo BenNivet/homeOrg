@@ -188,7 +188,7 @@ extension DishesViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        return UISwipeActionsConfiguration(actions: [UIContextualAction(style: .destructive, title: "Delete") { (action, swipeButtonView, completion) in
+        return UISwipeActionsConfiguration(actions: [UIContextualAction(style: .destructive, title: Constants.ButtonTitle.deleteMenu) { (action, swipeButtonView, completion) in
             self.deleteDish(at: indexPath)
             completion(true)
         }])
